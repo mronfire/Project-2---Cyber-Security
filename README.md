@@ -19,18 +19,6 @@ Teams must use QT, DOXYGEN, and GIT. Only team members should have access to the
 
 Please let me know who your teammates will be by November 29th (two points will be deducted from your score if you do not meet this deadline). All projects are due by December 8th.
 
-The assignment will be graded using the following scale:
-Item	Value
-Checkpoint 1 (12/6)	1
-Meet requirements	5
-Coding Style	1
-Use of C++ specified features 	1
-User interface	5
-Adherence to Scrum	1
-Contingency handling	1
-Extra Credit	2
-Total	17
-
 Final checkpoint – December 6th 
 
 The iCyberSecurity on-line pamphlet must:
