@@ -23,13 +23,23 @@ Final checkpoint – December 6th
 
 The iCyberSecurity on-line pamphlet must:
 1.	Contain a sales pitch that includes key selling points of iCyberSecurity Inc keeping the target market in mind.
+
 2.	Provide at least three service options along with corresponding prices 
+
 3.	Provide “contact us” methods
+
 4.	Your program should read from a customer file that keeps track of which companies have already received the pamphlet. There is a corresponding customer rating (very interested, somewhat interested, not interested, never call again). Some customers are considered key while other customers are considered “nice to have”. Customer names must be unique.
+
 5.	 Your program should be able to update the customer list (change customer rating, the “key” field, address, etc.) – administrator only
+
 6.	Your program should be able to add and delete customers. – administrator only
+
 7.	The customer list should be persistent between executions.
+
 8.	A customer should have the ability to order one or more products.
+
 9.	Customers should not have the ability to view/print the customer list – administrator only function
+
 10.	Produce a customer listing sorted by customer name (at any time) - administrator only
+
 11.	Produce a customer listing sorted by customer name (at any time) containing only the “key” customers. – administrator only
