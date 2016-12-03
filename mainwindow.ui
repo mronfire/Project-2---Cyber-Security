@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="gridLayoutWidget">
@@ -38,7 +38,14 @@
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="2" column="2">
-        <widget class="QLineEdit" name="EditPass"/>
+        <widget class="QLineEdit" name="EditPass">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item row="0" column="2">
         <spacer name="verticalSpacer">
@@ -605,7 +612,7 @@
      <x>0</x>
      <y>0</y>
      <width>861</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -620,6 +627,41 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>EditUser</tabstop>
+  <tabstop>EditPass</tabstop>
+  <tabstop>pushButton_login</tabstop>
+  <tabstop>pushButton_exit</tabstop>
+  <tabstop>pushButton_customers</tabstop>
+  <tabstop>pushButton_keyCustomers</tabstop>
+  <tabstop>pushButton_addRemove</tabstop>
+  <tabstop>pushButton_exit_2</tabstop>
+  <tabstop>listView</tabstop>
+  <tabstop>listView_2</tabstop>
+  <tabstop>pushButton_generateList</tabstop>
+  <tabstop>pushButton_viewCustomer</tabstop>
+  <tabstop>pushButton_updateCustomer</tabstop>
+  <tabstop>pushButton_back</tabstop>
+  <tabstop>customerInfo</tabstop>
+  <tabstop>rating</tabstop>
+  <tabstop>keyStatus</tabstop>
+  <tabstop>pushButton_update</tabstop>
+  <tabstop>pushButton_back_2</tabstop>
+  <tabstop>listView_3</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>pushButton_generateKey</tabstop>
+  <tabstop>pushButton_view</tabstop>
+  <tabstop>pushButton_back_3</tabstop>
+  <tabstop>lineEdit_customerName</tabstop>
+  <tabstop>lineEdit_address_1</tabstop>
+  <tabstop>lineEdit_address_2</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>lineEdit_rating</tabstop>
+  <tabstop>pushButton_add</tabstop>
+  <tabstop>pushButton_remove</tabstop>
+  <tabstop>pushButton_view_2</tabstop>
+  <tabstop>pushButton_back_4</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
