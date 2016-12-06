@@ -13,10 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    readrite.cpp
 
 HEADERS  += mainwindow.h \
-    vector.h
+    vector.h \
+    readrite.h
 
 FORMS    += mainwindow.ui \
 
