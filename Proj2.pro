@@ -18,4 +18,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     vector.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+
+OTHER_FILES += users.txt
