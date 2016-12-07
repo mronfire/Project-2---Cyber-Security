@@ -68,7 +68,35 @@ private slots:
      */
     void on_pushButton_exit_2_clicked();
 
+    void on_pushButton_back_clicked();
+
+    void on_pushButton_back_2_clicked();
+
+    void on_pushButton_back_3_clicked();
+
+    void on_pushButton_back_4_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_generateList_clicked();
+
+    void on_pushButton_viewCustomer_clicked();
+
+    void on_pushButton_updateCustomer_clicked();
+
+    void on_pushButton_update_clicked();
+
+    void on_pushButton_generateKey_clicked();
+
+    void on_pushButton_view_clicked();
+
+    void on_pushButton_remove_clicked();
+
+    void on_pushButton_add_clicked();
+
 private:
+    QString fileName = "C:/Users/mnelson39/Desktop/Project-2---Cyber-Security-master/users.txt";
+    vector<user> users;
     Ui::MainWindow *ui;      /*!< A MainWindow pointer to UI */
 };
 

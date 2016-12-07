@@ -2,8 +2,10 @@
 #define READRITE_H
 
 #include <QString>
+#include <QTextStream>
 #include <QFile>
 #include <fstream>
+#include <iostream>
 #include "vector.h"
 
 struct user

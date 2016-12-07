@@ -17,7 +17,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -53,9 +52,9 @@ public:
     QWidget *gridLayoutWidget_4;
     QGridLayout *gridLayout_4;
     QSpacerItem *verticalSpacer_5;
+    QSpacerItem *verticalSpacer_6;
     QPushButton *pushButton_customers;
     QLabel *viewKeyLabel;
-    QSpacerItem *verticalSpacer_6;
     QPushButton *pushButton_addRemove;
     QLabel *viewLabel;
     QLabel *addLabel;
@@ -63,24 +62,25 @@ public:
     QLabel *exitLabel;
     QPushButton *pushButton_exit_2;
     QLabel *menuLabel;
+    QPushButton *pushButton;
+    QLabel *label_14;
     QWidget *ViewCustomer_2;
     QWidget *gridLayoutWidget_2;
     QGridLayout *gridLayout_2;
     QPushButton *pushButton_updateCustomer;
     QPushButton *pushButton_generateList;
-    QListView *listView;
-    QListView *listView_2;
     QLabel *label_3;
     QPushButton *pushButton_viewCustomer;
     QPushButton *pushButton_back;
     QLabel *label_8;
+    QListWidget *CustomerList;
+    QListWidget *CustomerInfo;
     QWidget *UpdateCustomer;
     QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacer_3;
     QLineEdit *rating;
     QSpacerItem *horizontalSpacer_4;
-    QLineEdit *keyStatus;
     QLabel *label_5;
     QSpacerItem *verticalSpacer_4;
     QPushButton *pushButton_update;
@@ -88,37 +88,37 @@ public:
     QLabel *label_4;
     QListWidget *customerInfo;
     QPushButton *pushButton_back_2;
+    QRadioButton *isKeyButton;
     QWidget *ViewKeyCustomer;
     QWidget *gridLayoutWidget_5;
     QGridLayout *gridLayout_5;
-    QListView *listView_3;
     QLabel *label_6;
-    QListWidget *listWidget;
+    QListWidget *KeyData;
     QPushButton *pushButton_generateKey;
     QPushButton *pushButton_view;
     QPushButton *pushButton_back_3;
+    QListWidget *KeyList;
     QWidget *AddRemove;
     QWidget *gridLayoutWidget_6;
     QGridLayout *gridLayout_6;
-    QPushButton *pushButton_remove;
     QLineEdit *lineEdit_address_2;
     QLabel *label_12;
-    QPushButton *pushButton_add;
-    QPushButton *pushButton_view_2;
-    QSpacerItem *horizontalSpacer_6;
     QRadioButton *radioButton;
-    QSpacerItem *horizontalSpacer_5;
     QLineEdit *lineEdit_rating;
     QLineEdit *lineEdit_address_1;
     QLineEdit *lineEdit_customerName;
     QLabel *label_9;
     QLabel *label_10;
     QPushButton *pushButton_back_4;
-    QSpacerItem *verticalSpacer_8;
-    QSpacerItem *verticalSpacer_7;
     QLabel *label_11;
     QLabel *label_7;
     QLabel *label_13;
+    QPushButton *pushButton_remove;
+    QPushButton *pushButton_add;
+    QSpacerItem *verticalSpacer_7;
+    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *verticalSpacer_8;
+    QSpacerItem *horizontalSpacer_6;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -204,7 +204,11 @@ public:
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
         verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_4->addItem(verticalSpacer_5, 5, 1, 1, 1);
+        gridLayout_4->addItem(verticalSpacer_5, 6, 1, 1, 1);
+
+        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_4->addItem(verticalSpacer_6, 0, 1, 1, 1);
 
         pushButton_customers = new QPushButton(gridLayoutWidget_4);
         pushButton_customers->setObjectName(QStringLiteral("pushButton_customers"));
@@ -215,10 +219,6 @@ public:
         viewKeyLabel->setObjectName(QStringLiteral("viewKeyLabel"));
 
         gridLayout_4->addWidget(viewKeyLabel, 2, 0, 1, 1);
-
-        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_4->addItem(verticalSpacer_6, 0, 1, 1, 1);
 
         pushButton_addRemove = new QPushButton(gridLayoutWidget_4);
         pushButton_addRemove->setObjectName(QStringLiteral("pushButton_addRemove"));
@@ -243,17 +243,27 @@ public:
         exitLabel = new QLabel(gridLayoutWidget_4);
         exitLabel->setObjectName(QStringLiteral("exitLabel"));
 
-        gridLayout_4->addWidget(exitLabel, 4, 0, 1, 1);
+        gridLayout_4->addWidget(exitLabel, 5, 0, 1, 1);
 
         pushButton_exit_2 = new QPushButton(gridLayoutWidget_4);
         pushButton_exit_2->setObjectName(QStringLiteral("pushButton_exit_2"));
 
-        gridLayout_4->addWidget(pushButton_exit_2, 4, 1, 1, 1);
+        gridLayout_4->addWidget(pushButton_exit_2, 5, 1, 1, 1);
 
         menuLabel = new QLabel(gridLayoutWidget_4);
         menuLabel->setObjectName(QStringLiteral("menuLabel"));
 
         gridLayout_4->addWidget(menuLabel, 0, 0, 1, 1);
+
+        pushButton = new QPushButton(gridLayoutWidget_4);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        gridLayout_4->addWidget(pushButton, 4, 1, 1, 1);
+
+        label_14 = new QLabel(gridLayoutWidget_4);
+        label_14->setObjectName(QStringLiteral("label_14"));
+
+        gridLayout_4->addWidget(label_14, 4, 0, 1, 1);
 
         stackedWidget->addWidget(mainMenu);
         ViewCustomer_2 = new QWidget();
@@ -276,16 +286,6 @@ public:
 
         gridLayout_2->addWidget(pushButton_generateList, 2, 0, 1, 2);
 
-        listView = new QListView(gridLayoutWidget_2);
-        listView->setObjectName(QStringLiteral("listView"));
-
-        gridLayout_2->addWidget(listView, 1, 0, 1, 1);
-
-        listView_2 = new QListView(gridLayoutWidget_2);
-        listView_2->setObjectName(QStringLiteral("listView_2"));
-
-        gridLayout_2->addWidget(listView_2, 1, 1, 1, 1);
-
         label_3 = new QLabel(gridLayoutWidget_2);
         label_3->setObjectName(QStringLiteral("label_3"));
 
@@ -305,6 +305,16 @@ public:
         label_8->setObjectName(QStringLiteral("label_8"));
 
         gridLayout_2->addWidget(label_8, 0, 1, 1, 1);
+
+        CustomerList = new QListWidget(gridLayoutWidget_2);
+        CustomerList->setObjectName(QStringLiteral("CustomerList"));
+
+        gridLayout_2->addWidget(CustomerList, 1, 0, 1, 1);
+
+        CustomerInfo = new QListWidget(gridLayoutWidget_2);
+        CustomerInfo->setObjectName(QStringLiteral("CustomerInfo"));
+
+        gridLayout_2->addWidget(CustomerInfo, 1, 1, 1, 1);
 
         stackedWidget->addWidget(ViewCustomer_2);
         UpdateCustomer = new QWidget();
@@ -330,15 +340,10 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer_4, 1, 3, 1, 1);
 
-        keyStatus = new QLineEdit(gridLayoutWidget_3);
-        keyStatus->setObjectName(QStringLiteral("keyStatus"));
-
-        gridLayout_3->addWidget(keyStatus, 3, 2, 1, 1);
-
         label_5 = new QLabel(gridLayoutWidget_3);
         label_5->setObjectName(QStringLiteral("label_5"));
 
-        gridLayout_3->addWidget(label_5, 3, 1, 1, 1);
+        gridLayout_3->addWidget(label_5, 3, 1, 1, 1, Qt::AlignRight);
 
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -356,7 +361,7 @@ public:
         label_4 = new QLabel(gridLayoutWidget_3);
         label_4->setObjectName(QStringLiteral("label_4"));
 
-        gridLayout_3->addWidget(label_4, 2, 1, 1, 1);
+        gridLayout_3->addWidget(label_4, 2, 1, 1, 1, Qt::AlignRight);
 
         customerInfo = new QListWidget(gridLayoutWidget_3);
         customerInfo->setObjectName(QStringLiteral("customerInfo"));
@@ -367,6 +372,11 @@ public:
         pushButton_back_2->setObjectName(QStringLiteral("pushButton_back_2"));
 
         gridLayout_3->addWidget(pushButton_back_2, 5, 1, 1, 2);
+
+        isKeyButton = new QRadioButton(gridLayoutWidget_3);
+        isKeyButton->setObjectName(QStringLiteral("isKeyButton"));
+
+        gridLayout_3->addWidget(isKeyButton, 3, 2, 1, 1);
 
         stackedWidget->addWidget(UpdateCustomer);
         ViewKeyCustomer = new QWidget();
@@ -379,20 +389,15 @@ public:
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
-        listView_3 = new QListView(gridLayoutWidget_5);
-        listView_3->setObjectName(QStringLiteral("listView_3"));
-
-        gridLayout_5->addWidget(listView_3, 1, 0, 1, 1);
-
         label_6 = new QLabel(gridLayoutWidget_5);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         gridLayout_5->addWidget(label_6, 0, 0, 1, 1);
 
-        listWidget = new QListWidget(gridLayoutWidget_5);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
+        KeyData = new QListWidget(gridLayoutWidget_5);
+        KeyData->setObjectName(QStringLiteral("KeyData"));
 
-        gridLayout_5->addWidget(listWidget, 1, 1, 1, 1);
+        gridLayout_5->addWidget(KeyData, 1, 1, 1, 1);
 
         pushButton_generateKey = new QPushButton(gridLayoutWidget_5);
         pushButton_generateKey->setObjectName(QStringLiteral("pushButton_generateKey"));
@@ -409,6 +414,11 @@ public:
 
         gridLayout_5->addWidget(pushButton_back_3, 4, 0, 1, 2);
 
+        KeyList = new QListWidget(gridLayoutWidget_5);
+        KeyList->setObjectName(QStringLiteral("KeyList"));
+
+        gridLayout_5->addWidget(KeyList, 1, 0, 1, 1);
+
         stackedWidget->addWidget(ViewKeyCustomer);
         AddRemove = new QWidget();
         AddRemove->setObjectName(QStringLiteral("AddRemove"));
@@ -420,11 +430,6 @@ public:
         gridLayout_6->setContentsMargins(11, 11, 11, 11);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
-        pushButton_remove = new QPushButton(gridLayoutWidget_6);
-        pushButton_remove->setObjectName(QStringLiteral("pushButton_remove"));
-
-        gridLayout_6->addWidget(pushButton_remove, 7, 2, 1, 1);
-
         lineEdit_address_2 = new QLineEdit(gridLayoutWidget_6);
         lineEdit_address_2->setObjectName(QStringLiteral("lineEdit_address_2"));
 
@@ -435,28 +440,10 @@ public:
 
         gridLayout_6->addWidget(label_12, 4, 1, 1, 1);
 
-        pushButton_add = new QPushButton(gridLayoutWidget_6);
-        pushButton_add->setObjectName(QStringLiteral("pushButton_add"));
-
-        gridLayout_6->addWidget(pushButton_add, 7, 1, 1, 1);
-
-        pushButton_view_2 = new QPushButton(gridLayoutWidget_6);
-        pushButton_view_2->setObjectName(QStringLiteral("pushButton_view_2"));
-
-        gridLayout_6->addWidget(pushButton_view_2, 7, 3, 1, 1);
-
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer_6, 7, 4, 1, 1);
-
         radioButton = new QRadioButton(gridLayoutWidget_6);
         radioButton->setObjectName(QStringLiteral("radioButton"));
 
         gridLayout_6->addWidget(radioButton, 5, 2, 1, 1);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer_5, 7, 0, 1, 1);
 
         lineEdit_rating = new QLineEdit(gridLayoutWidget_6);
         lineEdit_rating->setObjectName(QStringLiteral("lineEdit_rating"));
@@ -486,15 +473,7 @@ public:
         pushButton_back_4 = new QPushButton(gridLayoutWidget_6);
         pushButton_back_4->setObjectName(QStringLiteral("pushButton_back_4"));
 
-        gridLayout_6->addWidget(pushButton_back_4, 8, 2, 1, 1);
-
-        verticalSpacer_8 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_6->addItem(verticalSpacer_8, 0, 2, 1, 1);
-
-        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_6->addItem(verticalSpacer_7, 9, 2, 1, 1);
+        gridLayout_6->addWidget(pushButton_back_4, 9, 1, 1, 2);
 
         label_11 = new QLabel(gridLayoutWidget_6);
         label_11->setObjectName(QStringLiteral("label_11"));
@@ -510,6 +489,32 @@ public:
         label_13->setObjectName(QStringLiteral("label_13"));
 
         gridLayout_6->addWidget(label_13, 1, 2, 1, 1);
+
+        pushButton_remove = new QPushButton(gridLayoutWidget_6);
+        pushButton_remove->setObjectName(QStringLiteral("pushButton_remove"));
+
+        gridLayout_6->addWidget(pushButton_remove, 8, 1, 1, 2);
+
+        pushButton_add = new QPushButton(gridLayoutWidget_6);
+        pushButton_add->setObjectName(QStringLiteral("pushButton_add"));
+
+        gridLayout_6->addWidget(pushButton_add, 7, 1, 1, 2);
+
+        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_6->addItem(verticalSpacer_7, 10, 1, 1, 2);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer_5, 1, 0, 9, 1);
+
+        verticalSpacer_8 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_6->addItem(verticalSpacer_8, 0, 1, 1, 2);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer_6, 1, 3, 9, 1);
 
         stackedWidget->addWidget(AddRemove);
         MainWindow->setCentralWidget(centralWidget);
@@ -530,20 +535,16 @@ public:
         QWidget::setTabOrder(pushButton_customers, pushButton_keyCustomers);
         QWidget::setTabOrder(pushButton_keyCustomers, pushButton_addRemove);
         QWidget::setTabOrder(pushButton_addRemove, pushButton_exit_2);
-        QWidget::setTabOrder(pushButton_exit_2, listView);
-        QWidget::setTabOrder(listView, listView_2);
-        QWidget::setTabOrder(listView_2, pushButton_generateList);
+        QWidget::setTabOrder(pushButton_exit_2, pushButton_generateList);
         QWidget::setTabOrder(pushButton_generateList, pushButton_viewCustomer);
         QWidget::setTabOrder(pushButton_viewCustomer, pushButton_updateCustomer);
         QWidget::setTabOrder(pushButton_updateCustomer, pushButton_back);
         QWidget::setTabOrder(pushButton_back, customerInfo);
         QWidget::setTabOrder(customerInfo, rating);
-        QWidget::setTabOrder(rating, keyStatus);
-        QWidget::setTabOrder(keyStatus, pushButton_update);
+        QWidget::setTabOrder(rating, pushButton_update);
         QWidget::setTabOrder(pushButton_update, pushButton_back_2);
-        QWidget::setTabOrder(pushButton_back_2, listView_3);
-        QWidget::setTabOrder(listView_3, listWidget);
-        QWidget::setTabOrder(listWidget, pushButton_generateKey);
+        QWidget::setTabOrder(pushButton_back_2, KeyData);
+        QWidget::setTabOrder(KeyData, pushButton_generateKey);
         QWidget::setTabOrder(pushButton_generateKey, pushButton_view);
         QWidget::setTabOrder(pushButton_view, pushButton_back_3);
         QWidget::setTabOrder(pushButton_back_3, lineEdit_customerName);
@@ -551,14 +552,11 @@ public:
         QWidget::setTabOrder(lineEdit_address_1, lineEdit_address_2);
         QWidget::setTabOrder(lineEdit_address_2, radioButton);
         QWidget::setTabOrder(radioButton, lineEdit_rating);
-        QWidget::setTabOrder(lineEdit_rating, pushButton_add);
-        QWidget::setTabOrder(pushButton_add, pushButton_remove);
-        QWidget::setTabOrder(pushButton_remove, pushButton_view_2);
-        QWidget::setTabOrder(pushButton_view_2, pushButton_back_4);
+        QWidget::setTabOrder(lineEdit_rating, pushButton_back_4);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -577,27 +575,27 @@ public:
         viewLabel->setText(QApplication::translate("MainWindow", "1 - View Customers:", 0));
         addLabel->setText(QApplication::translate("MainWindow", "3 - Add or Remove Customer:", 0));
         pushButton_keyCustomers->setText(QApplication::translate("MainWindow", "OK", 0));
-        exitLabel->setText(QApplication::translate("MainWindow", "4 - Exit", 0));
+        exitLabel->setText(QApplication::translate("MainWindow", "5 - Exit", 0));
         pushButton_exit_2->setText(QApplication::translate("MainWindow", "Exit", 0));
         menuLabel->setText(QApplication::translate("MainWindow", "Main Menu", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Back", 0));
+        label_14->setText(QApplication::translate("MainWindow", "4 - Back to Login", 0));
         pushButton_updateCustomer->setText(QApplication::translate("MainWindow", "Update Customer", 0));
         pushButton_generateList->setText(QApplication::translate("MainWindow", "Customer List", 0));
         label_3->setText(QApplication::translate("MainWindow", "Customer List:", 0));
         pushButton_viewCustomer->setText(QApplication::translate("MainWindow", "View Customer", 0));
         pushButton_back->setText(QApplication::translate("MainWindow", "Back", 0));
         label_8->setText(QApplication::translate("MainWindow", "Customer Info:", 0));
-        label_5->setText(QApplication::translate("MainWindow", "Status:", 0));
+        label_5->setText(QApplication::translate("MainWindow", "Key Member:", 0));
         pushButton_update->setText(QApplication::translate("MainWindow", "Update", 0));
         label_4->setText(QApplication::translate("MainWindow", "Rating:", 0));
         pushButton_back_2->setText(QApplication::translate("MainWindow", "Back", 0));
+        isKeyButton->setText(QString());
         label_6->setText(QApplication::translate("MainWindow", "Key Customers:", 0));
         pushButton_generateKey->setText(QApplication::translate("MainWindow", "Show List", 0));
         pushButton_view->setText(QApplication::translate("MainWindow", "View Customer", 0));
         pushButton_back_3->setText(QApplication::translate("MainWindow", "Back", 0));
-        pushButton_remove->setText(QApplication::translate("MainWindow", "Remove", 0));
         label_12->setText(QApplication::translate("MainWindow", "Address Line 2", 0));
-        pushButton_add->setText(QApplication::translate("MainWindow", "Add", 0));
-        pushButton_view_2->setText(QApplication::translate("MainWindow", "View", 0));
         radioButton->setText(QString());
         label_9->setText(QApplication::translate("MainWindow", "Address Line 1", 0));
         label_10->setText(QApplication::translate("MainWindow", "Key Customer", 0));
@@ -605,6 +603,8 @@ public:
         label_11->setText(QApplication::translate("MainWindow", "Rating", 0));
         label_7->setText(QApplication::translate("MainWindow", "Customer Name", 0));
         label_13->setText(QApplication::translate("MainWindow", "Enter Customer Information", 0));
+        pushButton_remove->setText(QApplication::translate("MainWindow", "Remove", 0));
+        pushButton_add->setText(QApplication::translate("MainWindow", "Add", 0));
     } // retranslateUi
 
 };
