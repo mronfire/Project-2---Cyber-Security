@@ -9,12 +9,13 @@ template <class Type>
 class vector
 {
 private:
-	int siz; //Total elements
-	Type *elem; //Dynamic array
-	int space; //Allocated space
+    int siz;     //Total elements
+    Type *elem;  //Dynamic array
+    int space;   //Allocated space
 
 public:
 	vector() : siz(0), elem(NULL), space(0) {}
+
 	explicit vector(int s) : siz(s), elem(new Type[s]), space(s)
 	{
 		for(int index = 0; index < siz; index++) elem[index] = 0;
@@ -36,18 +37,31 @@ public:
 	}
 
 	vector<Type>(vector<Type>&);
+
 	vector& operator =(vector&);
+
 	~vector(){ delete[] elem;}
+
 	Type& operator[](int n) {return elem[n];}
+
 	const Type& operator[](int n) const {return elem[n];}
+
 	int getSize() const { return siz;}
+
 	int getSpace() const {return space;}
 
 	void reserve(int newAlloc) //Reserves space
 	{
-		if(newAlloc <= space) return;
+        if(newAlloc <= space)
+            return;
+
 		Type* p = new Type[newAlloc];
-		for(int index = 0; index < siz; index++) p[index] = elem[index];
+
+        for(int index = 0; index < siz; index++)
+        {
+            p[index] = elem[index];
+        }
+
 		delete[] elem;
 		elem = p;
 		space = newAlloc;
@@ -56,14 +70,26 @@ public:
 	void resize(int newSize) //Resizes the array
 	{
 		reserve(newSize);
-		for(int index = 0; index < newSize; index++) elem[index] = 0;
+
+        for(int index = 0; index < newSize; index++)
+        {
+            elem[index] = 0;
+        }
+
 		siz = newSize;
 	}
 
 	void push_back(Type newElem) //Pushes new element to the end of the array
 	{
-		if(space == 0) reserve(8);
-		else if(siz == space) reserve(2 * space);
+        if(space == 0)
+        {
+            reserve(8);
+        }
+        else if(siz == space)
+        {
+            reserve(2 * space);
+        }
+
 		elem[siz] = newElem;
 		siz++;
 	}
@@ -71,6 +97,7 @@ public:
 	void delElem(int delElem) //Deletes an element
 	{
 		Type* newArr = new Type[siz - 1]; //New array with one less element
+
 		int f = 0; //Is incremented after element deletion to prevent skipping an index
 
 		for(int index = 0; index < siz; index++)

@@ -23,3 +23,6 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui \
 
 OTHER_FILES += users.txt
+
+RESOURCES += \
+    images.qrc

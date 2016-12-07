@@ -94,9 +94,19 @@ private slots:
 
     void on_pushButton_add_clicked();
 
+    void on_EditPass_returnPressed();
+
+    void on_pushButton_backToLogin_clicked();
+
+    void on_pushButton_basic_clicked();
+
+    void on_pushButton_business_clicked();
+
+    void on_pushButton_enterprise_clicked();
+
 private:
-    QString fileName = "C:/Users/mnelson39/Desktop/Project-2---Cyber-Security-master/users.txt";
-    vector<user> users;
+    QString fileName = "C:/Users/marod/Desktop/Project-2---Cyber-Security/users.txt";
+    vector<user> users;      /*!< A variable of type vector */
     Ui::MainWindow *ui;      /*!< A MainWindow pointer to UI */
 };
 

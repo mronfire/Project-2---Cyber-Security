@@ -9,6 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     readFromFile(users, fileName);
     ui->stackedWidget->setCurrentWidget(ui->loginPage); //always goes to first page
+
+    QPixmap pic(":/resourcesImages/pamphlet cyberSec.jpeg");
+    pic.scaled(ui->serviceOffers->width(),ui->serviceOffers->height(),Qt::KeepAspectRatio);
+    ui->serviceOffers->setPixmap(pic);
+
 }
 
 MainWindow::~MainWindow()
@@ -70,7 +75,8 @@ void MainWindow::on_pushButton_login_clicked()
         {
             if(password == userptr->password)
             {
-                QMessageBox::critical(this, "CyberSecurity", "Please buy our stuff!");
+                ui->stackedWidget->setCurrentWidget(ui->displayService);
+                //QMessageBox::critical(this, "CyberSecurity", "Please buy our stuff!");
             }
             else
             {
@@ -174,6 +180,7 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
     {
         index = 0;
         found = false;
+
         while(index < users.getSize() && !found)
         {
             if(item->text() == users[index].name)
@@ -183,6 +190,7 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
             }
             index++;
         }
+
         if(userptr != NULL)
         {
             ui->CustomerInfo->addItem("Name: " + userptr->name);
@@ -191,6 +199,7 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
             ui->CustomerInfo->addItem(userptr->address1);
             ui->CustomerInfo->addItem(userptr->address2);
             ui->CustomerInfo->addItem("This user is " + userptr->intrestLevel);
+
             if(userptr->isKey)
             {
                 ui->CustomerInfo->addItem("*Key User*");
@@ -404,6 +413,7 @@ void MainWindow::on_pushButton_add_clicked()
         userptr->intrestLevel = rating;
         userptr->isKey = isKey;
         users.push_back(*userptr);
+
         QMessageBox::critical(this, "Administrator", name + " has been added to the list");
     }
     catch(int a)
@@ -416,4 +426,29 @@ void MainWindow::on_pushButton_add_clicked()
     ui->lineEdit_address_1->clear();
     ui->lineEdit_address_2->clear();
     ui->lineEdit_rating->clear();
+}
+
+void MainWindow::on_EditPass_returnPressed()
+{
+    ui->pushButton_login->click();  ///This allows to just press Enter on your keyboard to login!! ;)
+}
+
+void MainWindow::on_pushButton_backToLogin_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->loginPage);
+}
+
+void MainWindow::on_pushButton_basic_clicked()
+{
+    QMessageBox::information(this, "Your Cart", "The Basic Package has been added to your cart. Thank you for shopping with us!");
+}
+
+void MainWindow::on_pushButton_business_clicked()
+{
+    QMessageBox::information(this, "Your Cart", "The Business Package has been added to your cart. Thank you for shopping with us!");
+}
+
+void MainWindow::on_pushButton_enterprise_clicked()
+{
+    QMessageBox::information(this, "Your Cart", "The Enterprise Package has been added to your cart. Thank you for shopping with us!");
 }
