@@ -488,14 +488,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
-        <widget class="QRadioButton" name="radioButton">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" rowspan="11">
+       <item row="1" column="0" rowspan="10">
         <spacer name="horizontalSpacer_5">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -521,14 +514,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Key Customer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="1" colspan="2">
+       <item row="10" column="1" colspan="2">
         <widget class="QPushButton" name="pushButton_back_4">
          <property name="text">
           <string>Back</string>
@@ -548,7 +534,7 @@
          </property>
         </spacer>
        </item>
-       <item row="12" column="1" colspan="2">
+       <item row="11" column="1" colspan="2">
         <spacer name="verticalSpacer_7">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -575,41 +561,21 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>Rating</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1" colspan="2">
+       <item row="9" column="1" colspan="2">
         <widget class="QPushButton" name="pushButton_remove">
          <property name="text">
           <string>Remove</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>TextLabel</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QLineEdit" name="lineEdit"/>
-       </item>
-       <item row="9" column="1" colspan="2">
+       <item row="8" column="1" colspan="2">
         <widget class="QPushButton" name="pushButton_add">
          <property name="text">
           <string>Add</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
-        <widget class="QLineEdit" name="lineEdit_rating"/>
-       </item>
-       <item row="1" column="3" rowspan="11">
+       <item row="1" column="3" rowspan="10">
         <spacer name="horizontalSpacer_6">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -629,6 +595,30 @@
         <widget class="QLabel" name="label_16">
          <property name="text">
           <string>Password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLineEdit" name="lineEdit_rating"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Rating</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QRadioButton" name="radioButton">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Key Customer</string>
          </property>
         </widget>
        </item>
@@ -682,8 +672,6 @@
   <tabstop>lineEdit_customerName</tabstop>
   <tabstop>lineEdit_address_1</tabstop>
   <tabstop>lineEdit_address_2</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>lineEdit_rating</tabstop>
   <tabstop>pushButton_back_4</tabstop>
  </tabstops>
  <resources/>

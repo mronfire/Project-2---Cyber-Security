@@ -355,7 +355,7 @@ void MainWindow::on_pushButton_remove_clicked()
 {
     int index = 0;
     bool found;
-    while(index < users.getSize())
+    while(index < users.getSize() && !found)
     {
         if(users[index].name == ui->lineEdit_customerName->text())
         {
@@ -369,9 +369,8 @@ void MainWindow::on_pushButton_remove_clicked()
 
     if(found)
     {
-        users.delElem(index);
         QMessageBox::critical(this, "Deleting", users[index].name + " is being deleted!");
-
+        users.delElem(index);
     }
     else
     {
@@ -384,21 +383,32 @@ void MainWindow::on_pushButton_add_clicked()
 {
     QString name = ui->lineEdit_customerName->text();
     QString password = ui->lineEdit_password->text();
-    QString name = ui->lineEdit_customerName->text();
-    QString name = ui->lineEdit_customerName->text();
-    QString name = ui->lineEdit_customerName->text();
-    QString name = ui->lineEdit_customerName->text();
+    QString address1 = ui->lineEdit_address_1->text();
+    QString address2 = ui->lineEdit_address_2->text();
+    QString rating = ui->lineEdit_rating->text();
+    bool isKey = ui->radioButton->isChecked();
+
+    user *userptr;
 
     try
     {
-        if()
+        if(name == "" || password == "" || address1 == "" || address2 == "" || rating == "")
         {
-
+            throw 1;
         }
+        userptr = new user;
+        userptr->name = name;
+        userptr->password = password;
+        userptr->address1 = address1;
+        userptr->address2 = address2;
+        userptr->intrestLevel = rating;
+        userptr->isKey = isKey;
+        users.push_back(*userptr);
+        QMessageBox::critical(this, "Administrator", name + " has been added to the list");
     }
     catch(int a)
     {
-
+        QMessageBox::critical(this, "Error!!!", "Please fill out all areas.");
     }
 
     ui->lineEdit_customerName->clear();
