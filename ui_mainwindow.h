@@ -20,6 +20,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
@@ -35,6 +36,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionContact_us;
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QStackedWidget *stackedWidget;
@@ -132,6 +134,7 @@ public:
     QRadioButton *radioButton;
     QLabel *label_10;
     QMenuBar *menuBar;
+    QMenu *menuContact_us;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -140,6 +143,12 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(861, 621);
+        actionContact_us = new QAction(MainWindow);
+        actionContact_us->setObjectName(QStringLiteral("actionContact_us"));
+        actionContact_us->setCheckable(false);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/resourcesImages/contact-phone-icon-4.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionContact_us->setIcon(icon);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -596,6 +605,8 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 861, 21));
+        menuContact_us = new QMenu(menuBar);
+        menuContact_us->setObjectName(QStringLiteral("menuContact_us"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -627,9 +638,12 @@ public:
         QWidget::setTabOrder(lineEdit_address_1, lineEdit_address_2);
         QWidget::setTabOrder(lineEdit_address_2, pushButton_back_4);
 
+        menuBar->addAction(menuContact_us->menuAction());
+        menuContact_us->addAction(actionContact_us);
+
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -638,6 +652,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        actionContact_us->setText(QApplication::translate("MainWindow", "Contact us", 0));
         pushButton_exit->setText(QApplication::translate("MainWindow", "Exit", 0));
         label->setText(QApplication::translate("MainWindow", "Username:", 0));
         label_2->setText(QApplication::translate("MainWindow", "Password:", 0));
@@ -684,6 +699,7 @@ public:
         label_11->setText(QApplication::translate("MainWindow", "Rating", 0));
         radioButton->setText(QString());
         label_10->setText(QApplication::translate("MainWindow", "Key Customer", 0));
+        menuContact_us->setTitle(QApplication::translate("MainWindow", "Options", 0));
     } // retranslateUi
 
 };

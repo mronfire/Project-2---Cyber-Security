@@ -428,6 +428,11 @@ void MainWindow::on_pushButton_add_clicked()
     ui->lineEdit_rating->clear();
 }
 
+void MainWindow::on_actionContact_us_triggered()
+{
+    QMessageBox::information(this, "Contact us", "To contact our customer service, please dial (905)753-1234");
+}
+
 void MainWindow::on_EditPass_returnPressed()
 {
     ui->pushButton_login->click();  ///This allows to just press Enter on your keyboard to login!! ;)
@@ -452,3 +457,4 @@ void MainWindow::on_pushButton_enterprise_clicked()
 {
     QMessageBox::information(this, "Your Cart", "The Enterprise Package has been added to your cart. Thank you for shopping with us!");
 }
+

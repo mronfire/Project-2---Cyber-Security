@@ -104,6 +104,8 @@ private slots:
 
     void on_pushButton_enterprise_clicked();
 
+    void on_actionContact_us_triggered();
+
 private:
     QString fileName = "C:/Users/marod/Desktop/Project-2---Cyber-Security/users.txt";
     vector<user> users;      /*!< A variable of type vector */

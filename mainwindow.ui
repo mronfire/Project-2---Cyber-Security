@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="loginPage">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -644,6 +644,13 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuContact_us">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="actionContact_us"/>
+   </widget>
+   <addaction name="menuContact_us"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -654,6 +661,18 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionContact_us">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/resourcesImages/contact-phone-icon-4.png</normaloff>:/resourcesImages/contact-phone-icon-4.png</iconset>
+   </property>
+   <property name="text">
+    <string>Contact us</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>

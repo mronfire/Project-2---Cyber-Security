@@ -2,5 +2,6 @@
     <qresource prefix="/new/prefix1"/>
     <qresource prefix="/">
         <file>resourcesImages/pamphlet cyberSec.jpeg</file>
+        <file>resourcesImages/contact-phone-icon-4.png</file>
     </qresource>
 </RCC>
