@@ -1,4 +1,3 @@
-
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
@@ -69,30 +68,62 @@ public:
 		siz++;
 	}
 
-	void delElem(int location) //Deletes an element
+	void delElem(int delElem) //Deletes an element
 	{
-		Type* p = new Type[siz - 1];
-		int f = 0;
+		Type* newArr = new Type[siz - 1]; //New array with one less element
+		int f = 0; //Is incremented after element deletion to prevent skipping an index
 
 		for(int index = 0; index < siz; index++)
 		{
-			if(index != location)
+			if(index != delElem) //Copies elements from the old array unless index matches delElem
 			{
-				p[index - f] = elem[index];
+				newArr[index - f] = elem[index];
 			}
 			else
 			{
-				f++;
+				f++; //Increments f if index matches delElem
 			}
 		}
 
 		siz--;
 		delete[] elem;
-		elem = p;
+		elem = newArr;
 	}
 
-	int begin() {return 0;}
-	int end() {return siz - 1;}
+	using iterator = Type*;
+	using const_iterator = Type*;
+
+	iterator begin() //Return address of beginning of the array
+	{
+		if(siz == 0)
+			return nullptr;
+
+		return &elem[0];
+	}
+
+	const_iterator begin() const //Return address of beginning of array (constant)
+	{
+		if(siz == 0)
+			return nullptr;
+
+		return &elem[0];
+	}
+
+	iterator end() //Return address of end of array
+	{
+		if(siz == 0)
+			return nullptr;
+
+		return &elem[siz];
+	}
+
+	const_iterator end() const //Return address of end of array (constant)
+	{
+		if(siz == 0)
+			return nullptr;
+
+		return &elem[siz];
+	}
 };
 
 
