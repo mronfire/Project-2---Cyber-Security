@@ -117,8 +117,7 @@ public:
 		elem = newArr;
 	}
 
-	using iterator = Type*;
-	using const_iterator = Type*;
+	typedef Type* iterator, const_iterator;
 
 	iterator begin() //Return address of beginning of the array
 	{
@@ -150,6 +149,65 @@ public:
 			return nullptr;
 
 		return &elem[siz];
+	}
+
+	iterator insert(iterator location, const Type& val) //Inserts an element at the "location" index
+	{
+		int index = location - begin();
+
+		if(siz == space)
+			reserve(siz * 2);
+
+		siz++;
+
+		iterator newLocation = begin() + index;
+
+		for(iterator pos = end() - 1; pos!= newLocation; pos--)
+			*pos = *(pos - 1);
+
+		*(begin() + index) = val;
+
+		return newLocation;
+	}
+
+	iterator find(Type val) //Finds the specified value in the array and returns its address
+	{
+		iterator found = begin();
+
+		for(int index = 0; index < siz; index++)
+		{
+			if(elem[index] == val)
+			{
+				found = &elem[index];
+				return found;
+			}
+		}
+
+		found = end();
+		return found;
+	}
+
+	void sort() //Sorts elements in ascending order
+	{
+		Type temp;
+		bool sorted = false;
+
+		while(sorted == false)
+		{
+			for(int index = 0; index < siz; index++)
+			{
+				sorted = true;
+
+				if(&elem[index + 1] != end() && elem[index + 1] < elem[index])
+				{
+					temp = elem[index];
+					elem[index] = elem[index + 1];
+					elem[index + 1] = temp;
+					sorted = false;
+				}
+
+			}
+		}
 	}
 };
 
