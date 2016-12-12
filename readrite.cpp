@@ -1,5 +1,11 @@
 #include"readrite.h"
 
+/*!
+ * \brief readFromFile - This will read all the customer accounts from a file
+ *                       and store them into the vector
+ * \param users
+ * \param inFile
+ */
 void readFromFile(vector<user> &users, QString inFile)
 {
     user *userptr;
@@ -8,6 +14,7 @@ void readFromFile(vector<user> &users, QString inFile)
     QFile userFile(inFile);
     userFile.open(QIODevice::ReadOnly | QIODevice::Text);
 
+    ///This will read in into the vector all information from the file
     while(!userFile.atEnd())
     {
         userptr = new user;
@@ -39,13 +46,20 @@ void readFromFile(vector<user> &users, QString inFile)
     std::cout << "done loading users!\n";
 }
 
+/*!
+ * \brief writeToFile - This will write all data and changes into the same file
+ * \param users
+ * \param outFile
+ */
 void writeToFile(vector<user> &users, QString outFile)
 {
     int length = users.getSize();
+
     QFile userFile(outFile);
     userFile.open(QIODevice::ReadWrite);
     QTextStream fout(&userFile);
 
+    ///This will output all information from the file
     for(int index = 0; index < length; index++)
     {
         fout << users[index].name << endl <<

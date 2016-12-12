@@ -5,27 +5,48 @@
 
 using std::copy;
 
+/*!
+ *  \brief Template Vector class
+ *  \details This templated vector class will allow us to store any type of data into the vector
+ *           and use it as a container to hold all customers
+ */
 template <class Type>
 class vector
 {
 private:
-    int siz;     //Total elements
-    Type *elem;  //Dynamic array
-    int space;   //Allocated space
+    int siz;     /*!< Total elements */
+    Type *elem;  /*!< Dynamic array */
+    int space;   /*!< Allocated space */
 
 public:
+    /*!
+     * \brief vector() - Constructor
+     * \details This will initialize the constructor
+     */
 	vector() : siz(0), elem(NULL), space(0) {}
 
+    /*!
+     * \brief vector() - Constructor alternate
+     * \details This will initialize the constructor
+     */
 	explicit vector(int s) : siz(s), elem(new Type[s]), space(s)
 	{
 		for(int index = 0; index < siz; index++) elem[index] = 0;
 	}
 
+    /*!
+     * \brief vector() - Copy Constructor
+     * \details This will copy another vector into our vector
+     */
 	vector(const vector& src) : siz(src.siz), elem(new Type[src.siz]), space(src.space)
 	{
 		copy(src.elem, src.elem + siz, elem);
 	}
 
+    /*!
+     * \brief vector() - Assignment operator
+     * \details This will allow to user the assignment opeartor
+     */
 	vector& operator=(const vector& src)
 	{
 		Type* p = new Type[src.siz];
@@ -38,18 +59,46 @@ public:
 
 	vector<Type>(vector<Type>&);
 
+    /*!
+     * \brief vector() - Assignment operator
+     * \details This will allow to user the assignment opeartor
+     */
 	vector& operator =(vector&);
 
+    /*!
+     * \brief vector() - Destructor
+     * \details This will destroy all elements from the vector
+     */
 	~vector(){ delete[] elem;}
 
+    /*!
+     * \brief vector() - operator[]
+     * \details This will return the element n in the vector
+     */
 	Type& operator[](int n) {return elem[n];}
 
+    /*!
+     * \brief vector() - const operator[]
+     * \details This will return the element n in the vector
+     */
 	const Type& operator[](int n) const {return elem[n];}
 
+    /*!
+     * \brief vector() - getSize
+     * \details This will return the size of vector
+     */
 	int getSize() const { return siz;}
 
+    /*!
+     * \brief vector() - getSpace
+     * \details This will return the space of the vector
+     */
 	int getSpace() const {return space;}
 
+    /*!
+     * \brief vector() - reserve
+     * \details This will reserve space into the vector
+     */
 	void reserve(int newAlloc) //Reserves space
 	{
         if(newAlloc <= space)
@@ -67,6 +116,10 @@ public:
 		space = newAlloc;
 	}
 
+    /*!
+     * \brief vector() - resize
+     * \details This will resize the vector
+     */
 	void resize(int newSize) //Resizes the array
 	{
 		reserve(newSize);
@@ -79,7 +132,11 @@ public:
 		siz = newSize;
 	}
 
-	void push_back(Type newElem) //Pushes new element to the end of the array
+    /*!
+     * \brief vector() - push Back
+     * \details This will push new elemnts into the vector at the end
+     */
+    void push_back(Type newElem)
 	{
         if(space == 0)
         {
@@ -94,21 +151,25 @@ public:
 		siz++;
 	}
 
+    /*!
+     * \brief vector() - delete element
+     * \details This will remove an element from the vector
+     */
 	void delElem(int delElem) //Deletes an element
 	{
-		Type* newArr = new Type[siz - 1]; //New array with one less element
+        Type* newArr = new Type[siz - 1]; ///New array with one less element
 
-		int f = 0; //Is incremented after element deletion to prevent skipping an index
+        int f = 0; ///Is incremented after element deletion to prevent skipping an index
 
 		for(int index = 0; index < siz; index++)
 		{
-			if(index != delElem) //Copies elements from the old array unless index matches delElem
+            if(index != delElem) ///Copies elements from the old array unless index matches delElem
 			{
 				newArr[index - f] = elem[index];
 			}
 			else
 			{
-				f++; //Increments f if index matches delElem
+                f++; ///Increments f if index matches delElem
 			}
 		}
 
@@ -119,7 +180,11 @@ public:
 
 	typedef Type* iterator, const_iterator;
 
-	iterator begin() //Return address of beginning of the array
+    /*!
+     * \brief iterator - begin
+     * \details This will return the address of the first element in the vector
+     */
+    iterator begin()
 	{
 		if(siz == 0)
 			return nullptr;
@@ -127,7 +192,11 @@ public:
 		return &elem[0];
 	}
 
-	const_iterator begin() const //Return address of beginning of array (constant)
+    /*!
+     * \brief iterator - const begin
+     * \details This will return the address of the first element in the vector
+     */
+    const_iterator begin() const
 	{
 		if(siz == 0)
 			return nullptr;
@@ -135,7 +204,11 @@ public:
 		return &elem[0];
 	}
 
-	iterator end() //Return address of end of array
+    /*!
+     * \brief iterator - end
+     * \details This will return the address of the last element in the vector
+     */
+    iterator end()
 	{
 		if(siz == 0)
 			return nullptr;
@@ -143,7 +216,11 @@ public:
 		return &elem[siz];
 	}
 
-	const_iterator end() const //Return address of end of array (constant)
+    /*!
+     * \brief iterator - const end
+     * \details This will return the address of the last element in the vector
+     */
+    const_iterator end() const
 	{
 		if(siz == 0)
 			return nullptr;
@@ -151,7 +228,11 @@ public:
 		return &elem[siz];
 	}
 
-	iterator insert(iterator location, const Type& val) //Inserts an element at the "location" index
+    /*!
+     * \brief iterator - insert
+     * \details This will insert an elemtn at the "location" index
+     */
+    iterator insert(iterator location, const Type& val)
 	{
 		int index = location - begin();
 
@@ -170,7 +251,11 @@ public:
 		return newLocation;
 	}
 
-	iterator find(Type val) //Finds the specified value in the array and returns its address
+    /*!
+     * \brief iterator - find
+     * \details This will find the specified value in the vector and return its address
+     */
+    iterator find(Type val)
 	{
 		iterator found = begin();
 
@@ -187,7 +272,11 @@ public:
 		return found;
 	}
 
-	void sort() //Sorts elements in ascending order
+    /*!
+     * \brief iterator - sort
+     * \details This will sort the elements in ascending order
+     */
+    void sort()
 	{
 		Type temp;
 		bool sorted = false;

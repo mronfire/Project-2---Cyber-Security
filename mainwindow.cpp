@@ -2,6 +2,10 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 
+//! Constructor
+/*!
+ * \details This will start the program and read all information from the files
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+//! Destructor
+/*!
+ * \details This will save all changes into a file and terminate the program
+ */
 MainWindow::~MainWindow()
 {
     writeToFile(users, fileName);
@@ -56,6 +64,10 @@ void MainWindow::on_pushButton_login_clicked()
     }
     else
     {
+        /*!
+          *  \brief This will check if user is trying to log in with a customer account, if wrong username or
+          *         password is provided it will let the user know.
+          */
         index = 0;
         userptr = NULL;
         while(index < users.getSize() && userptr == NULL)
@@ -73,10 +85,12 @@ void MainWindow::on_pushButton_login_clicked()
         }
         else
         {
+            /*!
+             *  \if password matches it will take the customer to the customer page
+             */
             if(password == userptr->password)
             {
                 ui->stackedWidget->setCurrentWidget(ui->displayService);
-                //QMessageBox::critical(this, "CyberSecurity", "Please buy our stuff!");
             }
             else
             {
@@ -133,6 +147,10 @@ void MainWindow::on_pushButton_exit_2_clicked()
     this->close();
 }
 
+//! PushButton to return to main menu and clear all fields
+/*!
+ * \brief This will return the user to the main menu
+ */
 void MainWindow::on_pushButton_back_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->mainMenu);
@@ -140,26 +158,46 @@ void MainWindow::on_pushButton_back_clicked()
     ui->CustomerInfo->clear();
 }
 
+//! PushButton to return to customer view window
+/*!
+ * \brief This will return the user to the customer view window
+ */
 void MainWindow::on_pushButton_back_2_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->ViewCustomer_2);
 }
 
+//! PushButton to return to main menu
+/*!
+ * \brief This will return the user to the main menu
+ */
 void MainWindow::on_pushButton_back_3_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->mainMenu);
 }
 
+//! PushButton to return to main menu
+/*!
+ * \brief This will return the user to the main menu
+ */
 void MainWindow::on_pushButton_back_4_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->mainMenu);
 }
 
+//! PushButton to return to login page
+/*!
+ * \brief This will return the user to the login page
+ */
 void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
 }
 
+//! PushButton to generate the customer list
+/*!
+ * \brief This will generate the list of customer into the list widget
+ */
 void MainWindow::on_pushButton_generateList_clicked()
 {
     for(int index = 0; index < users.getSize(); index++)
@@ -168,6 +206,10 @@ void MainWindow::on_pushButton_generateList_clicked()
     }
 }
 
+//! PushButton to view a customer information
+/*!
+ * \brief This will generate the appropiate information for each client
+ */
 void MainWindow::on_pushButton_viewCustomer_clicked()
 {
     ui->CustomerInfo->clear();
@@ -181,6 +223,7 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
         index = 0;
         found = false;
 
+        ///This will look for the selected customer in our list
         while(index < users.getSize() && !found)
         {
             if(item->text() == users[index].name)
@@ -191,6 +234,9 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
             index++;
         }
 
+        /*!
+         *  \if customer was found, it will display all the information
+         */
         if(userptr != NULL)
         {
             ui->CustomerInfo->addItem("Name: " + userptr->name);
@@ -220,6 +266,10 @@ void MainWindow::on_pushButton_viewCustomer_clicked()
     }
 }
 
+//! PushButton to take customer to the update window
+/*!
+ * \brief This will direct user to update widget to make any changes on clients
+ */
 void MainWindow::on_pushButton_updateCustomer_clicked()
 {
     ui->customerInfo->clear();
@@ -236,6 +286,8 @@ void MainWindow::on_pushButton_updateCustomer_clicked()
     {
         index = 0;
         found = false;
+
+        ///This will look for the selected customer in our list
         while(index < users.getSize() && !found)
         {
             if(item->text() == users[index].name)
@@ -245,6 +297,10 @@ void MainWindow::on_pushButton_updateCustomer_clicked()
             }
             index++;
         }
+
+        /*!
+         *  \if customer was found, it will display all the information
+         */
         if(userptr != NULL)
         {
             ui->customerInfo->addItem("Name: " + userptr->name);
@@ -273,6 +329,10 @@ void MainWindow::on_pushButton_updateCustomer_clicked()
     }
 }
 
+//! PushButton to update a client
+/*!
+ * \brief This will update the desired client and save all changes
+ */
 void MainWindow::on_pushButton_update_clicked()
 {
     QListWidgetItem *item = ui->CustomerList->currentItem();
@@ -285,6 +345,8 @@ void MainWindow::on_pushButton_update_clicked()
     {
         index = 0;
         found = false;
+
+        ///It will look for the customer in our list
         while(index < users.getSize() && !found)
         {
             if(item->text() == users[index].name)
@@ -294,6 +356,8 @@ void MainWindow::on_pushButton_update_clicked()
             }
             index++;
         }
+
+        ///assign new changes into the customer
         userptr->intrestLevel = ui->rating->text();
         ui->rating->clear();
         if(ui->isKeyButton->isChecked())
@@ -308,6 +372,10 @@ void MainWindow::on_pushButton_update_clicked()
     on_pushButton_updateCustomer_clicked(); //refreshes the info
 }
 
+//! PushButton to generate all the key members
+/*!
+ * \brief This will generate all the key clients from our database
+ */
 void MainWindow::on_pushButton_generateKey_clicked()
 {
     for(int index = 0; index < users.getSize(); index++)
@@ -319,6 +387,10 @@ void MainWindow::on_pushButton_generateKey_clicked()
     }
 }
 
+//! PushButton to view information about key clients
+/*!
+ * \brief This will generate all the key clients from our database
+ */
 void MainWindow::on_pushButton_view_clicked()
 {
     ui->KeyData->clear();
@@ -331,6 +403,8 @@ void MainWindow::on_pushButton_view_clicked()
     {
         index = 0;
         found = false;
+
+        ///It will look for customer to display
         while(index < users.getSize() && !found)
         {
             if(item->text() == users[index].name)
@@ -340,6 +414,8 @@ void MainWindow::on_pushButton_view_clicked()
             }
             index++;
         }
+
+        ///When found it will display all the information
         if(userptr != NULL)
         {
             ui->KeyData->addItem("Name: " + userptr->name);
@@ -360,10 +436,16 @@ void MainWindow::on_pushButton_view_clicked()
     }
 }
 
+//! PushButton to remove a client from our database
+/*!
+ * \brief This will remove a chosen client from our database
+ */
 void MainWindow::on_pushButton_remove_clicked()
 {
     int index = 0;
     bool found;
+
+    ///This will look for the customer to be removed
     while(index < users.getSize() && !found)
     {
         if(users[index].name == ui->lineEdit_customerName->text())
@@ -376,6 +458,7 @@ void MainWindow::on_pushButton_remove_clicked()
         }
     }
 
+    ///When found it will delete the customer from our database
     if(found)
     {
         QMessageBox::critical(this, "Deleting", users[index].name + " is being deleted!");
@@ -388,8 +471,13 @@ void MainWindow::on_pushButton_remove_clicked()
     ui->lineEdit_customerName->clear();
 }
 
+//! PushButton to add a client into our database
+/*!
+ * \brief This will add a member as a customer into our database
+ */
 void MainWindow::on_pushButton_add_clicked()
 {
+    ///Read in all new information for new customer
     QString name = ui->lineEdit_customerName->text();
     QString password = ui->lineEdit_password->text();
     QString address1 = ui->lineEdit_address_1->text();
@@ -399,6 +487,8 @@ void MainWindow::on_pushButton_add_clicked()
 
     user *userptr;
 
+    ///This will add all the new information into a new struct of customer
+    /// and assign proper information to it
     try
     {
         if(name == "" || password == "" || address1 == "" || address2 == "" || rating == "")
@@ -428,31 +518,55 @@ void MainWindow::on_pushButton_add_clicked()
     ui->lineEdit_rating->clear();
 }
 
+//! PushButton to display a contact us information
+/*!
+ * \brief This will display to the user a how to contact us information
+ */
 void MainWindow::on_actionContact_us_triggered()
 {
     QMessageBox::information(this, "Contact us", "To contact our customer service, please dial (905)753-1234");
 }
 
+//! PushButton to allow user to press enter in the login page to log in
+/*!
+ * \brief This will allow easier access to main menu by pressing "enter" in the keyboard
+ */
 void MainWindow::on_EditPass_returnPressed()
 {
     ui->pushButton_login->click();  ///This allows to just press Enter on your keyboard to login!! ;)
 }
 
+//! PushButton to return to login page
+/*!
+ * \brief This will return the user to the login page
+ */
 void MainWindow::on_pushButton_backToLogin_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
 }
 
+//! PushButton to add the basic package to the cart
+/*!
+ * \brief This will add this package to the shopping cart
+ */
 void MainWindow::on_pushButton_basic_clicked()
 {
     QMessageBox::information(this, "Your Cart", "The Basic Package has been added to your cart. Thank you for shopping with us!");
 }
 
+//! PushButton to add the business package to the cart
+/*!
+ * \brief This will add this package to the shopping cart
+ */
 void MainWindow::on_pushButton_business_clicked()
 {
     QMessageBox::information(this, "Your Cart", "The Business Package has been added to your cart. Thank you for shopping with us!");
 }
 
+//! PushButton to add the enterprise package to the cart
+/*!
+ * \brief This will add this package to the shopping cart
+ */
 void MainWindow::on_pushButton_enterprise_clicked()
 {
     QMessageBox::information(this, "Your Cart", "The Enterprise Package has been added to your cart. Thank you for shopping with us!");
