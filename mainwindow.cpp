@@ -50,7 +50,7 @@ void MainWindow::on_pushButton_login_clicked()
     /*! \if correct username and password it will log in
      *  \else it will prompt the user that username or password isn't correct
      */
-    if(username == "Admin" || username == "admin")
+    if(username == "Admin" || username == "mario")
     {
         if(password == "admin" || password == "password")
         {

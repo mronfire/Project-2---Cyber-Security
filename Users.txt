@@ -14,7 +14,7 @@ CIA
 12345
 987 Jefferson Blvd
 Baltimore, MD 00754
-not interested
+
 nice to have
 Saddleback College
 Gauch0
@@ -31,6 +31,10 @@ nice to have
 Los Angeles Angels
 SPORTS
 2000 East Gene Autry Way
+Anaheim, CA 92806
+very interested
+key
+try Way
 Anaheim, CA 92806
 very interested
 key
